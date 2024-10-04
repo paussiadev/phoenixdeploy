@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Confirmar Exclusão</h1>
+<p>Tem certeza que deseja excluir a roupa "{{ object.nome }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <a href="{% url 'roupa_detail' roupa.pk %}" class="btn btn-secondary" type="submit">Sim</a>
+    <a href="{% url 'roupa_detail' object.pk %}" class="btn btn-dark">Não</a>
+
+    {% comment "" %}
+    <input type="submit" value="Sim">
+    <a href="{% url 'material_detail' object.pk %}">Não</a>
+</form>
+    {% endcomment %}
+
+{% endblock %}

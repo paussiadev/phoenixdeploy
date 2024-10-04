@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'material_create' %}" class="btn btn-dark mb-3">Adicionar Material</a>
+
+<ul>
+    {% for material in object_list %}
+        <li> {{ material.nome }}</li>
+        <li>
+            <a href="{% url 'material_detail' material.pk %}" class="btn btn-dark">Detalhes</a>
+            <a href="{% url 'material_update' material.pk %}" class="btn btn-dark">Editar</a>
+            <a href="{% url 'material_delete' material.pk %}" class="btn btn-dark">Excluir</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

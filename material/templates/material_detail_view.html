@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ object.nome}}</h2>
+<p>Descrição: {{ object.descricao }}</p>
+<p>Forma de medida: {{ object.unid_medida }}</p>
+<p>Valor: {{ object.valor}}</p>
+<p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=100></p>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'movimentacao_create' %}" class="btn btn-dark mb-3">Visualizar movimentação</a>
+
+<ul>
+    {% for movimentacao in object_list %}
+        <li> {{ movimentacao.nome }}</li>
+        <li>
+            <a href="{% url 'movimentacao_detail' movimentacao.pk %}" class="btn btn-dark">Detalhes</a>
+            <a href="{% url 'movimentacao_update' movimentacao.pk %}" class="btn btn-dark">Editar</a>
+            <a href="{% url 'movimentacao_delete' movimentacao.pk %}" class="btn btn-dark">Excluir</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

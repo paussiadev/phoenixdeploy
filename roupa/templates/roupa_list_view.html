@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'roupa_create' %}" class="btn btn-dark mb-3">Adicionar Roupa</a>
+
+<ul>
+    {% for roupa in object_list %}
+        <li> {{ roupa.nome }}</li>
+        <li>
+            <a href="{% url 'roupa_detail' roupa.pk %}" class="btn btn-dark">Detalhes</a>
+            <a href="{% url 'roupa_update' roupa.pk %}" class="btn btn-dark">Editar</a>
+            <a href="{% url 'roupa_delete' roupa.pk %}" class="btn btn-dark">Excluir</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}
