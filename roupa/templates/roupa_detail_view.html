@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
+{% block title %}Detalhes da roupa{% endblock %}
+
 {% block content %}
 
 <h2>{{ object.nome}}</h2>
 <p>Descrição: {{ object.descricao }}</p>
 <p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=100></p>
-<p>Materiais: {{ object.materiais }}</p>
 
-<h2>{{ object.roupa}}</h2>
-<p>Material: {{ object.material}}</p>
-<p>Quantidade: {{ object.quantidade}}</p>
+
+<h4>Materiais:</h4>
+<ul>
+    {% for material in object.materiais.all %}
+        <li>{{ material.nome }} </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

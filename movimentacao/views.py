@@ -14,13 +14,16 @@ class MovimentacaoDetailView(DetailView):
 
 class MovimentacaoCreateView(CreateView):
     model = Movimentacao
-    template_name = 'movimentacao_form.html'
+    form_class = MovimentacaoForm
     template_name = 'movimentacao_form.html'
     success_url = reverse_lazy('movimentacao_list')
 
 class MovimentacaoUpdateView(UpdateView):
     model = Movimentacao
+    form_class = MovimentacaoForm
     template_name = 'movimentacao_form.html'
+    success_url = reverse_lazy('movimentacao_list')
 
 class MovimentacaoDeleteView(DeleteView):
     model = Movimentacao
+    success_url = reverse_lazy('movimentacao_list')

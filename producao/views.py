@@ -14,6 +14,7 @@ class ProducaoDetailView(DetailView):
 
 class ProducaoCreateView(CreateView):
     model = Producao
+    form_class = ProducaoForm
     template_name = 'producao_form.html'
     success_url = reverse_lazy('producao_list')
 

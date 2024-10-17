@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes da produção{% endblock %}
+
+{% block content %}
+
+<p>Roupa: {{ object.roupa }}</p>
+<p>Quantidade: {{ object.quantidade}}</p>
+<p>Data: {{ object.data}}</p>
+<p>Valor total: {{ object.valorTotal}}</p>
+
+{% endblock %}

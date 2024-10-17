@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de produção de roupas{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'producao_create' %}" class="btn btn-dark mb-3">Criar saída de material</a>
+
+<ul>
+    {% for producao in object_list %}
+        <li> {{ producao.roupa }}</li>
+        <li>
+            <a href="{% url 'producao_detail' producao.pk %}" class="btn btn-dark">Detalhes</a>
+            <a href="{% url 'producao_update' producao.pk %}" class="btn btn-dark">Editar</a>
+            <a href="{% url 'producao_delete' producao.pk %}" class="btn btn-dark">Excluir</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

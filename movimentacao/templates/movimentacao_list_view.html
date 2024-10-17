@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
+{% block title %}Lista de movimentações{% endblock %}
+
 {% block content %}
 
-<a href="{% url 'movimentacao_create' %}" class="btn btn-dark mb-3">Visualizar movimentação</a>
+<a href="{% url 'movimentacao_create' %}" class="btn btn-dark mb-3">Criar entrada de material</a>
 
 <ul>
     {% for movimentacao in object_list %}
-        <li> {{ movimentacao.nome }}</li>
+        <li> {{ movimentacao.codigo_material }}, Data: {{ movimentacao.data}}, valor: {{ movimentacao.valor_total }} </li>
         <li>
             <a href="{% url 'movimentacao_detail' movimentacao.pk %}" class="btn btn-dark">Detalhes</a>
             <a href="{% url 'movimentacao_update' movimentacao.pk %}" class="btn btn-dark">Editar</a>

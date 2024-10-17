@@ -1,5 +1,4 @@
 from django.db import models
-
 from roupa.models import Roupa
 
 # Create your models here.

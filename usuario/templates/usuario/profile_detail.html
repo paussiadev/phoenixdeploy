@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Perfil de {{ user.username }}</h1>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>CPF:</strong> {{ user.cpf }}</p>
+    <p><strong>Idioma:</strong> {{ user.get_idioma_display }}</p>
+    
+    {% if user.profile_picture %}
+        <img src="{{ user.profile_picture.url }}" alt="Foto de Perfil" style="max-width: 150px;">
+    {% else %}
+        <p>Sem foto de perfil.</p>
+    {% endif %}
+
+    <a href="{% url 'profile_edit' %}">Editar Perfil</a>
+{% endblock %}

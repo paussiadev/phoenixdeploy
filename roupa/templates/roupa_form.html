@@ -1,12 +1,41 @@
 {% extends 'base.html' %}
 
+{% block title %}Roupa{% endblock %}
+
 {% block content %}
+    <h1>{% if object %}Editar Roupa{% else %}Criar Roupa{% endif %}</h1>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-<h1>{% if form.instance.pk %}Editar{% else %}Adicionar{% endif %} Roupa</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
-
+        <h3>Materiais</h3>
+        {{ material_formset.management_form }}
+        <table>
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Quantidade</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in material_formset %}
+                <tr>
+                    <td>{{ form.material }}</td>
+                    <td>{{ form.quantidade }}</td>
+                    <td>
+                        {% if form.instance.pk %}
+                            <input type="checkbox" name="{{ form.DELETE.name }}" id="{{ form.DELETE.id }}">
+                        {% else %}
+                            &mdash;
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <button type="submit">Salvar</button>
+    </form>
 {% endblock %}

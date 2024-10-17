@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
+{% block title %}Confirmação de exclusão da movimentação{% endblock %}
+
 {% block content %}
 
 <h1>Confirmar Exclusão</h1>
 <p>Tem certeza que deseja excluir a movimentação "{{ object.codigo_material }}"?</p>
 <form method="POST">
     {% csrf_token %}
-    <a href="{% url 'movimentacao_detail' movimentacao.pk %}" class="btn btn-secondary" type="submit">Sim</a>
-    <a href="{% url 'movimentacao_detail' object.pk %}" class="btn btn-dark">Não</a>
+    <input type="submit" class="btn btn-secondary" value="Sim">
+    <a href="{% url 'roupa_list' %}" class="btn btn-dark">Não</a>
 
     {% comment "" %}
     <input type="submit" value="Sim">
