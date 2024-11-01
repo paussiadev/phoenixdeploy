@@ -26,15 +26,20 @@
     <li class="list-group-item"><p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=300></p></li>
 </ul>
 
-<div class="alert alert-white" role="alert">
-    <h4>Materiais:</h4>
-</div>
+<h4 class="mt-3">Materiais:</h4>
 
-<ul>
-    {% for material in object.materiais.all %}
-        <li>{{ material.nome }} </li>
-    {% endfor %}
-</ul>
+
+<div class="row">
+        {% for material in materiais %}
+            <div class="mt-2">
+                <p><strong>Material:</strong> {{ material.material.nome }}</p>
+                <p><strong>Quantidade:</strong> {{ material.quantidade }} </p>
+            </div>
+            <hr>
+        {% empty %}
+            <p>Não há materiais cadastrados.</p>
+        {% endfor %}
+    </div>
 
 
 {% endblock %}

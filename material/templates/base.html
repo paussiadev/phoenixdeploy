@@ -25,10 +25,10 @@
                     <li> <a class="nav-link active" aria-current="page" href="{% url 'producao_list' %}">Produção</a></li>
                     </ul>
 
-                    <span class="ms-auto d-flex">
-
-                    <img src="{{ user.profile.photo.url }}" alt="Foto de perfil">
-                    <a class="nav-link active link-light" aria-current="page" href="{% url 'profile' %}">Perfil</a>
+                    <span class="ms-auto d-flex flex-column">
+                       
+                        <a class="nav-link active link-light" aria-current="page" href="{% url 'profile' %}"><img src="{{ user.profile_picture.url }}" alt="Foto de Perfil" class="rounded rounded-5 mx-auto d-block" width="60"></a>
+                        <a class="nav-link active link-light mx-auto" aria-current="page" href="{% url 'profile' %}">Perfil</a>
 
                     </span>
             </div>

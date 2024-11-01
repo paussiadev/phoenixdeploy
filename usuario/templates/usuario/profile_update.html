@@ -10,7 +10,7 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button type="submit">Salvar Alterações</button>
+       
     </form>
 
     <a href="{% url 'profile' %}">Voltar para o Perfil</a>
@@ -28,7 +28,7 @@
     
             <a type="button" href="{% url 'profile' %}" class="btn btn-outline-dark"><strong>Voltar para o Perfil</strong></a>
 
-            <a type="button" href="{% url 'profile_edit' %}" class="btn btn-dark"><strong>Salvar Alterações</strong></a>
+            <button type="submit" class="btn btn-dark"><b>Salvar Alterações</b></button>
             </form>
         </li>
       </ul>

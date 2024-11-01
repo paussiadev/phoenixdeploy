@@ -25,6 +25,7 @@ class RoupaDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         roupa = self.object
         context['valor_producao'] = roupa.valor_producao()
+        context['materiais'] = self.object.roupamaterial_set.all()
         return context
     
 class RoupaCreateView(CreateView):

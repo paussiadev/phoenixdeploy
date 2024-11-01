@@ -1,7 +1,9 @@
+from pyexpat.errors import messages
 from django.views.generic import DetailView, UpdateView
 from django.urls import reverse_lazy
 from .models import CustomUser
 from .forms import CustomUserUpdateForm
+from django.contrib.auth.views import PasswordChangeView
 
 
 class UserProfileView(DetailView):
@@ -21,3 +23,11 @@ class UserProfileUpdateView(UpdateView):
 
     def get_object(self):
         return self.request.user 
+
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = 'usuario/password_change.html'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Senha alterada com sucesso!')
+        return super().form_valid(form)
