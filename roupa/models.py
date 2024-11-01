@@ -26,7 +26,6 @@ class RoupaMaterial(models.Model):
     roupa = models.ForeignKey(Roupa, on_delete=models.CASCADE)
     material = models.ForeignKey('material.Material', on_delete=models.CASCADE)
     quantidade = models.PositiveBigIntegerField()
-
     def __str__(self) -> str:
         return self.roupa.nome
 

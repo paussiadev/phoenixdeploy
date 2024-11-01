@@ -1,0 +1,6 @@
+{% for form in formset %}
+    <div class="material-form">
+        {{ form.as_p }}
+        <button type="button" class="remove-material">Remover</button>
+    </div>
+{% endfor %}

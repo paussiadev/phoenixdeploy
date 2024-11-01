@@ -3,17 +3,35 @@
 {% block title %}Lista de produção de roupas{% endblock %}
 
 {% block content %}
-
-<a href="{% url 'producao_create' %}" class="btn btn-dark mb-3">Criar saída de material</a>
+<a href="{% url 'producao_create' %}" class="btn btn-dark mb-3 btn-lg">Criar saída de material</a>
 
 <ul>
-    {% for producao in object_list %}
-        <li> {{ producao.roupa }}</li>
-        <li>
-            <a href="{% url 'producao_detail' producao.pk %}" class="btn btn-dark">Detalhes</a>
-            <a href="{% url 'producao_update' producao.pk %}" class="btn btn-dark">Editar</a>
-            <a href="{% url 'producao_delete' producao.pk %}" class="btn btn-dark">Excluir</a>
-        </li>
+    <table class="table table-striped table-light">
+        <thead>
+          <tr>
+            <th scope="col">Roupa</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Data</th>
+            <th scope="col">Valor total</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+            {% for producao in object_list %}
+            <tr>
+             <th scope="row">{{ producao.roupa }}</th>
+             <td> {{ producao.quantidade }}</td>
+             <td>{{ producao.data }}</td>
+             <td>{{ producao.valorTotal }}</td>
+             
+    
+                <td>
+                <a href="{% url 'producao_detail' producao.pk %}" class="btn btn-dark">Detalhes</a>
+                <a href="{% url 'producao_update' producao.pk %}" class="btn btn-dark">Editar</a>
+                <a href="{% url 'producao_delete' producao.pk %}" class="btn btn-secondary">Excluir</a>
+                </td>
+            </tr>
     {% endfor %}
 </ul>
 

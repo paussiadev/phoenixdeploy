@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'movimentacao.apps.MovimentacaoConfig',
     'producao.apps.ProducaoConfig',
     'usuario',
+    'dashboard.apps.DashboardConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Diretório 'static' na raiz do projeto
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -132,3 +137,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'usuario.CustomUser'
+
+LOGOUT_REDIRECT_URL = 'login' 

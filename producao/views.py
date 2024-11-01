@@ -26,3 +26,4 @@ class ProducaoUpdateView(UpdateView):
 
 class ProducaoDeleteView(DeleteView):
     model = Producao
+    success_url = reverse_lazy('producao_list')

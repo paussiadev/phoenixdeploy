@@ -1,41 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %}Roupa{% endblock %}
+{% block title %}Gerenciamento de Roupas{% endblock %}
 
 {% block content %}
-    <h1>{% if object %}Editar Roupa{% else %}Criar Roupa{% endif %}</h1>
-    
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
 
-        <h3>Materiais</h3>
+<h1>Adicionar Roupa</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <h2>Materiais</h2>
+    <div id="material-forms">
         {{ material_formset.management_form }}
-        <table>
-            <thead>
-                <tr>
-                    <th>Material</th>
-                    <th>Quantidade</th>
-                    <th>Remover</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for form in material_formset %}
-                <tr>
-                    <td>{{ form.material }}</td>
-                    <td>{{ form.quantidade }}</td>
-                    <td>
-                        {% if form.instance.pk %}
-                            <input type="checkbox" name="{{ form.DELETE.name }}" id="{{ form.DELETE.id }}">
-                        {% else %}
-                            &mdash;
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        
-        <button type="submit">Salvar</button>
-    </form>
+        {% for form in material_formset %}
+            <div class="material-form">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+    </div>
+    
+    <button type="button" id="add-material">Adicionar Material</button>
+    <button type="submit">Salvar</button>
+</form>
+
+<!-- Template oculto para novos materiais -->
+<div id="material-template" class="d-none">
+    <div class="material-form">
+        {{ material_formset.empty_form.as_p }}
+    </div>
+</div>
+
+<!-- JavaScript para manipular a adição dinâmica -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let materialFormIndex = {{ material_formset.total_form_count }};
+        const materialFormTemplate = document.getElementById('material-template').innerHTML;
+        const materialFormContainer = document.getElementById('material-forms');
+    
+        document.getElementById('add-material').addEventListener('click', function() {
+            // Cria o novo material a partir do template, substituindo "__prefix__" pelo índice correto
+            const newMaterialForm = materialFormTemplate.replace(/__prefix__/g, materialFormIndex);
+            materialFormContainer.insertAdjacentHTML('beforeend', newMaterialForm);
+            materialFormIndex++;
+        });
+    });
+    
+</script>
+
 {% endblock %}
+
+

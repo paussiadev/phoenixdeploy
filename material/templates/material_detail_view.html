@@ -4,11 +4,24 @@
 
 {% block content %}
 
+{% comment %}
 <h2>{{ object.nome}}</h2>
-<p>Descrição: {{ object.descricao }}</p>
-<p>Forma de medida: {{ object.unid_medida }}</p>
-<p>Valor: {{ object.valor}}</p>
-<p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=100></p>
+<p><strong>Descrição:</strong> {{ object.descricao }}</p>
+<p><strong>Forma de medida:</strong> {{ object.unid_medida }}</p>
+<p><strong>Valor:</strong> {{ object.valor}}</p>
+<p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=300></p>
+{% endcomment %}
 
+
+<div class="alert alert-secondary" role="alert">
+    <h2><strong>{{ object.nome}}</strong></h2>
+</div>
+<ul class="list-group">
+    <li class="list-group-item"><p><strong>Descrição:</strong> {{ object.descricao }}</p></li>
+    <li class="list-group-item"><p><strong>Forma de medida:</strong> {{ object.unid_medida }}</p></li>
+    <li class="list-group-item"><p><strong>Valor:</strong> {{ object.valor}}</p></li>
+    <li class="list-group-item"><p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=300></p></li>
+
+  </ul>
 
 {% endblock %}
