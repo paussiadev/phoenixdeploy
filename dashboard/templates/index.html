@@ -23,7 +23,7 @@
                             <li class="list-group-item">
                                 <a href="{% url 'roupa_detail' roupa.pk %}" class="link-dark"> <strong>  {{ roupa.nome }} </strong> </a>-
                                 <img src="{{ roupa.imagem.url }}" alt="{{ roupa.nome }}" width="30">
-                                <strong>Valor:</strong> R$ {{ roupa.valor_producao|floatformat:2 }}
+                                <strong>Valor de produção:</strong> R$ {{ roupa.valor_producao|floatformat:2 }}
                             </li>
                             <hr>
                         {% empty %}

@@ -11,8 +11,7 @@
         <tr>
           <th scope="col">Nome</th>
           <th scope="col">Descrição</th>
-          <th scope="col">Materiais</th>
-          <th scope="col">Quantidade</th>
+          <th scope="col">Custo Atual de Produção</th>
           <th scope="col">Imagem</th>
           <th scope="col">Ação</th>
         </tr>
@@ -23,8 +22,7 @@
           <tr>
             <th scope="row">{{ roupa.nome }}</th>
             <td>{{ roupa.descricao }}</td>
-            <td>{{ roupa.material }}</td>
-            <td> {{ roupa.quantidade }}</td>
+            <td>R$ {{ roupa.valor_producao |floatformat:2 }}</td>
             <td><img src="{{ roupa.imagem.url }}" width="80"></td>
             
             <td>

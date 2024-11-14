@@ -21,9 +21,9 @@
             {% for movimentacao in object_list %}
             <tr>
              <th scope="row">{{ movimentacao.codigo_material }}</th>
-             <td> {{ movimentacao.quantidade }}</td>
+             <td> {{ movimentacao.quantidade|floatformat:0 }}</td>
              <td>{{ movimentacao.data }}</td>
-             <td>{{ movimentacao.valor_total }}</td>
+             <td>R$ {{ movimentacao.valor_total }}</td>
              
     
                 <td>

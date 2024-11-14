@@ -4,23 +4,37 @@
 
 {% block content %}
 
-<h1>Adicionar Roupa</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
     
+    <!-- Exibe erros gerais do formulário -->
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    
+    {{ form.as_p }}
+
     <h2>Materiais</h2>
     <div id="material-forms">
         {{ material_formset.management_form }}
+        
         {% for form in material_formset %}
             <div class="material-form">
+                <!-- Exibe erros específicos do formset -->
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.errors }}
+                    </div>
+                {% endif %}
                 {{ form.as_p }}
             </div>
         {% endfor %}
     </div>
-    
-    <button type="button" id="add-material">Adicionar Material</button>
-    <button type="submit">Salvar</button>
+
+    <button type="button" id="add-material" class="btn btn-secondary">Adicionar Material</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
 <!-- Template oculto para novos materiais -->
@@ -32,16 +46,22 @@
 
 <!-- JavaScript para manipular a adição dinâmica -->
 <script>
+
     document.addEventListener("DOMContentLoaded", function() {
+        // Inicializa com o total de formulários existentes
         let materialFormIndex = {{ material_formset.total_form_count }};
         const materialFormTemplate = document.getElementById('material-template').innerHTML;
         const materialFormContainer = document.getElementById('material-forms');
+        const totalFormsInput = document.querySelector('input[name="roupamaterial_set-TOTAL_FORMS"]');
     
         document.getElementById('add-material').addEventListener('click', function() {
             // Cria o novo material a partir do template, substituindo "__prefix__" pelo índice correto
             const newMaterialForm = materialFormTemplate.replace(/__prefix__/g, materialFormIndex);
             materialFormContainer.insertAdjacentHTML('beforeend', newMaterialForm);
             materialFormIndex++;
+            
+            // Atualiza o valor de TOTAL_FORMS
+            totalFormsInput.value = materialFormIndex;
         });
     });
     

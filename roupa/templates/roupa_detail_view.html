@@ -4,19 +4,6 @@
 
 {% block content %}
 
-{% comment %}
-<h2>{{ object.nome}}</h2>
-<p><strong>Descrição:</strong> {{ object.descricao }}</p>
-<p><img src="{{object.imagem.url}}" alt="{{ musica.titulo }}" width=100></p>
-
-<h4>Materiais:</h4>
-<ul>
-    {% for material in object.materiais.all %}
-        <li>{{ material.nome }} </li>
-    {% endfor %}
-</ul>
-{% endcomment %}
-
 <div class="alert alert-secondary" role="alert">
     <h2><strong>{{ object.nome}}</strong></h2>
 </div>
@@ -33,7 +20,8 @@
         {% for material in materiais %}
             <div class="mt-2">
                 <p><strong>Material:</strong> {{ material.material.nome }}</p>
-                <p><strong>Quantidade:</strong> {{ material.quantidade }} </p>
+                <p><strong>Quantidade:</strong> {{ material.quantidade }} {{ material.material.unid_medida }} </p>
+                <p><strong>Valor:</strong> R$ {{ material.material.valor|floatformat:2 }}</p>
             </div>
             <hr>
         {% empty %}

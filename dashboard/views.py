@@ -37,5 +37,5 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return self.success_url or super().get_success_url()
 
-class CustomLogoutView(LogoutView):
+class CustomLogoutView(LoginRequiredMixin, LogoutView):
     next_page = reverse_lazy('login')
